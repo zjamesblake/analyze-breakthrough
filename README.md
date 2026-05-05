@@ -1,98 +1,89 @@
 # Breakthrough Analyzer
 
-Generate breakthrough ad analysis reports from your Meta Ads Manager data.
-
-This tool processes a full-account CSV export, isolates a specific winning ad, and produces a standardized CSV with weekly spend and ROAS performance data — ready to submit for the Evolve Winning Ads Study.
+Turn your Meta Ads data into a breakthrough ad report — in one command.
 
 ---
 
-## Setup (One-Time)
+## Setup
 
-### 1. Download this folder
+### Step 1: Download this folder
 
-Place the `analyze-breakthrough/` folder anywhere on your computer (Desktop works fine).
+Click the green **Code** button above, then **Download ZIP**. Unzip it.
 
-### 2. Install Claude Code
+### Step 2: Place it in your Claude Code workspace
 
-If you don't already have it: https://claude.ai/code
+Move the `analyze-breakthrough` folder into whatever folder you use with Claude Code. If you don't have one yet, your Desktop is fine.
 
-### 3. Open in Claude Code
+### Step 3: Open Claude Code and install
 
-```bash
-cd ~/Desktop/analyze-breakthrough
-claude
-```
+Open Claude Code in the folder where you placed `analyze-breakthrough`. Then tell Claude:
 
-### 4. Install Python dependencies
+> "Go into the analyze-breakthrough folder and install the requirements"
 
-When Claude Code opens, run:
-```
-pip3 install -r requirements.txt
-```
-
-That's it. You're ready to run reports.
+Claude will run `pip3 install -r requirements.txt` for you. This only needs to happen once.
 
 ---
 
-## Usage
+## How to Run a Report
 
-### 1. Export your CSV from Meta Ads Manager
+### Step 1: Export your data from Meta Ads Manager
 
-- **Date range:** January 1 through today (year-to-date)
-- **Level:** Ad
-- **Currency:** USD (important!)
-- **Attribution:** 7-day click
-- **Scope:** All campaigns in the account
-- **Columns:** Ad name, Campaign name, Day, Amount spent, Purchases, Cost per purchase, Purchases conversion value, ROAS, Reporting starts, Reporting ends
+Spencer will walk you through this in the Loom video. The key points:
 
-Save the exported CSV into the `account-csvs/` folder inside this directory.
+- Export at the **Ad level**
+- **Full account** (all campaigns)
+- **Year-to-date** date range
+- **USD** currency
+- **7-day click** attribution
 
-### 2. Run the analysis
+Save the file into the `analyze-breakthrough/account-csvs/` folder.
+
+### Step 2: Run the command
 
 In Claude Code, type:
+
 ```
-/analyze-breakthrough @YourExport.csv "YOUR AD NAME" --brand "Your Brand"
+/analyze-breakthrough @YourFile.csv "YOUR AD NAME" --brand "Your Brand"
 ```
 
 Replace:
-- `YourExport.csv` with your CSV filename
-- `YOUR AD NAME` with the name (or part of the name) of your winning ad
-- `Your Brand` with your brand name
+- `YourFile.csv` — your export filename
+- `YOUR AD NAME` — the name of your winning ad (or part of it)
+- `Your Brand` — your brand name
 
-### 3. Verify the output
+### Step 3: Check your numbers
 
-The report will be saved to `breakthrough-reports/`. Open it and spot-check Week 1-2 numbers against your ad account to confirm accuracy.
+Claude will show you a summary. Compare Week 1 and Week 2 numbers against your ad account to make sure they match.
 
-### 4. Submit
+### Step 4: Submit
 
-Send the generated CSV to Spencer for inclusion in the Winning Ads Study.
+Send the generated file (in `breakthrough-reports/`) to Spencer.
 
 ---
 
 ## Troubleshooting
 
 **"No rows found matching creative"**
-- Your ad name didn't match anything in the CSV
-- Open your CSV in a spreadsheet and search for your ad to find the exact name
-- Try a shorter substring (e.g., "BATCH#61" instead of the full ad name)
 
-**Numbers look wrong (all zeros or very small)**
-- The tool auto-detects which campaign launched your ad first
-- If it picked the wrong campaign, tell Claude Code which campaign to use:
-  - "Re-run but use campaign 'My Campaign Name' as the IC"
+Your ad name didn't match. Open your CSV in Google Sheets and search for your ad to see the exact name. You only need a piece of it — for example, "BATCH#61" instead of the full name.
 
-**"ModuleNotFoundError: No module named 'pandas'"**
-- Run `pip3 install -r requirements.txt` first
+**Numbers look wrong**
+
+Tell Claude: "The numbers look off — can you try using [campaign name] as the initial campaign?" (Use the campaign your ad was originally launched in.)
+
+**"No module named pandas"**
+
+Tell Claude: "Please install the requirements." It will run the install for you.
 
 ---
 
-## What the output contains
+## What you get
 
-A single CSV with your brand info at the top, then 4 data sections:
+A CSV file with your brand info and 4 sections of weekly data (Weeks 0-8):
 
-1. **IC Weekly Spend** — How much of the initial campaign your ad captured (Weeks 0-8)
-2. **IC Weekly ROAS** — Your ad's ROAS vs the campaign average
-3. **Account Weekly Spend** — How much of total account spend your ad captured
+1. **IC Weekly Spend** — What % of the campaign your ad captured
+2. **IC Weekly ROAS** — Your ad's ROAS vs campaign average
+3. **Account Weekly Spend** — What % of total account spend your ad captured
 4. **Account Weekly ROAS** — Your ad's ROAS vs account average
 
-Each section includes week-over-week growth percentages so you can see how fast the campaign/account scaled after your ad launched.
+The tool automatically detects your account's spend tier and which campaign your ad launched in.
