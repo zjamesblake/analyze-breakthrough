@@ -81,9 +81,9 @@ Tell Claude: "Please install the requirements." It will run the install for you.
 
 A CSV file with your brand info and 4 sections of weekly data (Weeks 0-8):
 
-1. **IC Weekly Spend** — What % of the campaign your ad captured
-2. **IC Weekly ROAS** — Your ad's ROAS vs campaign average
-3. **Account Weekly Spend** — What % of total account spend your ad captured
-4. **Account Weekly ROAS** — Your ad's ROAS vs account average
+1. **IC Weekly Spend** — What % of the IC campaign your ad captured, with raw $ and WoW growth
+2. **IC Weekly ROAS** — Your ad's ROAS % vs IC campaign, plus absolute ROAS numbers for the ad and IC campaign
+3. **Account Weekly Spend** — What % of total account spend your ad captured, with raw $ and WoW growth
+4. **Account Weekly ROAS** — Your ad's ROAS % vs account, plus absolute ROAS numbers for the ad and full account
 
 The tool automatically detects your account's spend tier and which campaign your ad launched in.

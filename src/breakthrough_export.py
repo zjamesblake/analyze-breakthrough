@@ -149,11 +149,13 @@ def generate_breakthrough_csv(
 
         # --- IC WEEKLY ROAS ---
         writer.writerow(["--- IC WEEKLY ROAS ---"])
-        writer.writerow(["Week", "Ad % vs Campaign"])
+        writer.writerow(["Week", "Ad % vs Campaign", "Ad ROAS (#)", "IC ROAS (#)"])
         for row in ic_wk_roas:
             writer.writerow([
                 row["week"],
                 _fmt(row.get("pct_vs_campaign")),
+                _fmt(row.get("ad_roas")),
+                _fmt(row.get("total_roas")),
             ])
         writer.writerow([])
 
@@ -172,11 +174,13 @@ def generate_breakthrough_csv(
 
         # --- ACCOUNT WEEKLY ROAS ---
         writer.writerow(["--- ACCOUNT WEEKLY ROAS ---"])
-        writer.writerow(["Week", "Ad % vs Account"])
+        writer.writerow(["Week", "Ad % vs Account", "Ad ROAS (#)", "Account ROAS (#)"])
         for row in acct_wk_roas:
             writer.writerow([
                 row["week"],
                 _fmt(row.get("pct_vs_account")),
+                _fmt(row.get("ad_roas")),
+                _fmt(row.get("account_roas")),
             ])
 
     return filepath

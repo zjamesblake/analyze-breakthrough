@@ -45,9 +45,11 @@ Member exports CSV → runs /analyze-breakthrough → verifies numbers → submi
 ## Output Format
 
 Single CSV with metadata header + 4 stacked sections:
-1. IC Weekly Spend (5 columns)
-2. IC Weekly ROAS (2 columns)
-3. Account Weekly Spend (5 columns)
-4. Account Weekly ROAS (2 columns)
+1. **IC Weekly Spend** — `Week, Ad % of Campaign, Ad $, IC $, IC Spend WoW Δ%`
+2. **IC Weekly ROAS** — `Week, Ad % vs Campaign, Ad ROAS (#), IC ROAS (#)`
+3. **Account Weekly Spend** — `Week, Ad % of Account, Ad $, Account $, Account Spend WoW Δ%`
+4. **Account Weekly ROAS** — `Week, Ad % vs Account, Ad ROAS (#), Account ROAS (#)`
+
+The ROAS `(#)` columns are absolute values computed from raw revenue/spend for that weekly period — not derived from the `Ad % vs` column.
 
 Sections separated by `--- LABEL ---` rows for human readability and programmatic parsing.

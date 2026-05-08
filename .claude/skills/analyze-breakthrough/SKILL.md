@@ -58,6 +58,7 @@ print(f'Report saved: {path}')
 Read the generated CSV and display a summary:
 - Brand, Ad, Account Tier
 - Week 1 IC spend % and account spend %
+- Week 1 Ad ROAS (#) and IC ROAS (#)
 - Confirm it looks reasonable
 
 ### Step 5: Troubleshooting
@@ -80,3 +81,19 @@ Tell the user:
 - The report was saved to `breakthrough-reports/<filename>.csv`
 - The detected account tier
 - They should verify Week 1-2 numbers against their ad account before submitting
+
+## Output Format
+
+The CSV contains four sections:
+
+**IC Weekly Spend:** `Week, Ad % of Campaign, Ad $, IC $, IC Spend WoW Δ%`
+
+**IC Weekly ROAS:** `Week, Ad % vs Campaign, Ad ROAS (#), IC ROAS (#)`
+- `Ad ROAS (#)` — absolute ROAS for the ad within the IC campaign for that week
+- `IC ROAS (#)` — absolute ROAS for the full IC campaign for that week (computed from raw revenue/spend, not derived from the % column)
+
+**Account Weekly Spend:** `Week, Ad % of Account, Ad $, Account $, Account Spend WoW Δ%`
+
+**Account Weekly ROAS:** `Week, Ad % vs Account, Ad ROAS (#), Account ROAS (#)`
+- `Ad ROAS (#)` — absolute ROAS for the ad across all campaigns for that week
+- `Account ROAS (#)` — absolute ROAS for the full account for that week

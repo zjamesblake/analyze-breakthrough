@@ -19,8 +19,9 @@
 ## What it does
 
 Takes your full-account Meta export, isolates your winning ad, and produces a CSV with:
-- Weekly spend % and ROAS % (Weeks 0-8)
-- Week-over-week growth
+- Weekly spend % vs IC campaign and account (Weeks 0-8)
+- Weekly ROAS % vs IC campaign and account, plus absolute ROAS numbers for the ad, IC campaign, and account
+- Week-over-week spend growth
 - Auto-detected spend tier and initial campaign
 
 One ad per report. Run it again for additional ads.
